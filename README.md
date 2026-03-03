@@ -34,7 +34,6 @@ cookiecutter .              # prompt for project_slug, username
 
 You will be prompted for:
 
-- **project_name** — Human-readable name (e.g. "My MakerRepo CAD Project").
 - **project_slug** — Python package name: use only letters, numbers, and underscores, e.g. `my_makerrepo_cad` (no dashes, since it becomes the top-level Python package and project directory name).
 - **username** — Your MakerRepo.com username (used in clone/push URLs).
 
