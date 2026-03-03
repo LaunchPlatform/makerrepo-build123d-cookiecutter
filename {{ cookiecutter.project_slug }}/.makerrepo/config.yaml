@@ -1,0 +1,22 @@
+# Repository configuration for MakerRepo.com.
+# This file defines repository-wide defaults for how artifacts
+# are exported when built by MakerRepo and the `mr` CLI.
+#
+# Documentation:
+#   https://docs.makerrepo.com/repository-config/
+#
+# `artifacts.default_config` sets defaults that apply when an
+# individual `@artifact` decorator does not explicitly specify
+# `export_step` or `export_3mf`. You can override these per
+# artifact in your Python code if needed.
+
+artifacts:
+  default_config:
+    # Export each artifact as a STEP file by default when
+    # `export_step` is omitted on the `@artifact` decorator.
+    export_step: true
+
+    # Export each artifact as a 3MF file by default when
+    # `export_3mf` is omitted on the `@artifact` decorator.
+    export_3mf: true
+
