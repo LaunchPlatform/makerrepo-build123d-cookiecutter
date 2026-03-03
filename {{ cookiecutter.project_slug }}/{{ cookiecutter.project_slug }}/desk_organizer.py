@@ -6,10 +6,7 @@ parameters (defined with Pydantic) and returns a customized Build123D object.
 On MakerRepo.com, visitors can tweak parameters in the web UI and request
 a new build. Use @customizable and a Pydantic model for parameters.
 """
-from build123d import Box
-from build123d import BuildPart
-from build123d import Locations
-from build123d import Mode
+from build123d import *
 from mr import customizable
 from pydantic import BaseModel
 from pydantic import Field
