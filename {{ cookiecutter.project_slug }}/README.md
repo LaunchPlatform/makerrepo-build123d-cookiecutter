@@ -107,20 +107,20 @@ Once you have the project cloned and dependencies installed, you can make change
 
 1. **Make local changes** — edit CAD modules, add artifacts or generators, then commit and push:
 
-   ```bash
-   git add .
-   git commit -m "Your commit message"
-   git push
-   ```
+    ```bash
+    git add .
+    git commit -m "Your commit message"
+    git push
+    ```
 
 2. After you push, MakerRepo CI will build your artifacts and generators and publish them to the web UI. Refresh your repository page on MakerRepo.com to view and share models in the embedded OCP viewer.
 
-If you generated this project with the cookiecutter template and have not created a MakerRepo repository yet, [create one](https://makerrepo.com/repositories/create), then add it as the remote and push:
+    If you generated this project with the cookiecutter template and have not created a MakerRepo repository yet, [create one](https://makerrepo.com/repositories/create), then add it as the remote and push:
 
-   ```bash
-   git remote add origin https://makerrepo.com/{{ cookiecutter.username }}/{{ cookiecutter.project_slug }}.git
-   git push -u origin main
-   ```
+    ```bash
+    git remote add origin https://makerrepo.com/{{ cookiecutter.username }}/{{ cookiecutter.project_slug }}.git
+    git push -u origin main
+    ```
 
 ## Documentation
 
