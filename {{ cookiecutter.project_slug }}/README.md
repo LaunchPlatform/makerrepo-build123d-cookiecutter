@@ -145,3 +145,7 @@ If you generated this project with the cookiecutter template and have not create
 
 - Add more modules and decorate functions with `@artifact` or `@customizable`; MakerRepo (and `mr`) will discover them automatically.
 - Use `desc` and `short_desc` on decorators to improve how models appear on MakerRepo.com.
+
+## Questions or feedback
+
+If you have any questions, run into issues, or have suggestions for improving MakerRepo, feel free to reach out to us at **support@makerrepo.com**.
