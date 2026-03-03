@@ -1,0 +1,16 @@
+[project]
+name = "makerrepo-build123d-cookiecutter"
+version = "0.1.0"
+description = "Cookiecutter template for Build123D repositories on MakerRepo.com"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "cookiecutter>=2.0",
+]
+
+[tool.uv.scripts]
+# Generate the template into _test_output using default cookiecutter values (no prompt).
+# Use this to test template changes locally. Output: _test_output/my_makerrepo_cad/
+generate = "cookiecutter . --no-input -o _test_output"
+# Generate, sync deps in the generated project, and list artifacts/generators to verify discovery.
+verify = "cookiecutter . --no-input -o _test_output && cd _test_output/my_makerrepo_cad && uv sync && uv run mr artifacts list && uv run mr generators list"

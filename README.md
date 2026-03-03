@@ -12,7 +12,7 @@ A [Cookiecutter](https://cookiecutter.readthedocs.io/) template for generating a
 ## Prerequisites
 
 - [uv](https://docs.astral.sh/uv/) installed (`curl -LsSf https://astral.sh/uv/install.sh | sh` or via your package manager).
-- [Cookiecutter](https://cookiecutter.readthedocs.io/) (`pip install cookiecutter` or `uv tool install cookiecutter`).
+- For using the template: [Cookiecutter](https://cookiecutter.readthedocs.io/) (`pip install cookiecutter` or `uv tool install cookiecutter`). If you clone this repo, run `uv sync` in the repo root and Cookiecutter will be available via the scripts below.
 
 ## Usage
 
@@ -43,6 +43,17 @@ A new directory named after `project_slug` will be created. `cd` into it, then f
 1. Creating a repo on MakerRepo.com and pushing your code.
 2. Using `makerrepo-cli` (`mr`) to list, view, export, and snapshot artifacts and generators locally.
 3. Links to [MakerRepo docs](https://docs.makerrepo.com/).
+
+## Testing the template (developers)
+
+From the **template repo root** (this repository), after `uv sync`:
+
+| Command | Description |
+|---------|-------------|
+| `uv run generate` | Generate the project into `_test_output/` using default values (no prompts). Output: `_test_output/my_makerrepo_cad/`. |
+| `uv run verify` | Same as `generate`, then runs `uv sync` and `mr artifacts list` / `mr generators list` inside the generated project to confirm discovery works. |
+
+`_test_output/` is in `.gitignore`.
 
 ## License
 
