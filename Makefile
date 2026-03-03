@@ -4,8 +4,9 @@ TEST_PROJECT := $(TEST_OUTPUT)/my_makerrepo_cad
 
 .PHONY: generate verify
 # Generate the template into _test_output using default cookiecutter values (no prompt).
+# Use uv run so cookiecutter from the project venv is used.
 generate:
-	cookiecutter . --no-input -o $(TEST_OUTPUT)
+	uv run cookiecutter . --no-input -o $(TEST_OUTPUT)
 
 # Generate, sync deps in the generated project, and list artifacts/generators to verify discovery.
 verify: generate
