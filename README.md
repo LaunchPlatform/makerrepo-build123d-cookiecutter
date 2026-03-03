@@ -35,7 +35,7 @@ cookiecutter .              # prompt for project_name, project_slug, author
 You will be prompted for:
 
 - **project_name** — Human-readable name (e.g. "My MakerRepo CAD Project").
-- **project_slug** — Python-friendly package name (e.g. `my_makerrepo_cad`).
+- **project_slug** — Python package name: use only letters, numbers, and underscores, e.g. `my_makerrepo_cad` (no dashes, since it is used as the top-level module in `mr generators view` and similar commands).
 - **author** — Your name or team.
 
 A new directory named after `project_slug` will be created. `cd` into it, then follow the generated project’s **README.md** for:

@@ -74,17 +74,19 @@ def desk_organizer(parameters: DeskOrganizerParameters):
             Box(L - 2 * t, W - 2 * t, H - t + 0.1, mode=Mode.SUBTRACT)
 
         # X-direction dividers (span full width, run along Y)
+        divider_height = H - 1.5 * t
+        divider_z = 0.75 * t
         cell_l = (L - (nx - 1) * t) / nx
         for i in range(nx - 1):
             x = -L / 2 + (i + 1) * cell_l + (i + 0.5) * t
-            with Locations((x, 0, H / 2)):
-                Box(t, W - 2 * t, H + 0.1, mode=Mode.ADD)
+            with Locations((x, 0, divider_z)):
+                Box(t, W - 2 * t, divider_height, mode=Mode.ADD)
 
         # Y-direction dividers (span full length, run along X)
         cell_w = (W - (ny - 1) * t) / ny
         for j in range(ny - 1):
             y = -W / 2 + (j + 1) * cell_w + (j + 0.5) * t
-            with Locations((0, y, H / 2)):
-                Box(L - 2 * t, t, H + 0.1, mode=Mode.ADD)
+            with Locations((0, y, divider_z)):
+                Box(L - 2 * t, t, divider_height, mode=Mode.ADD)
 
     return build
