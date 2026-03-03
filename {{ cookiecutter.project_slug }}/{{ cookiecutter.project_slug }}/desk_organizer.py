@@ -7,9 +7,9 @@ On MakerRepo.com, visitors can tweak parameters in the web UI and request
 a new build. Use @customizable and a Pydantic model for parameters.
 """
 from build123d import Box
-from build123d import Build
+from build123d import BuildPart
+from build123d import Locations
 from build123d import Mode
-from build123d import Pos
 from mr import customizable
 from pydantic import BaseModel
 from pydantic import Field
@@ -66,25 +66,25 @@ def desk_organizer(parameters: DeskOrganizerParameters):
     nx = parameters.n_length
     ny = parameters.n_width
 
-    with Build() as build:
+    with BuildPart() as build:
         # Outer tray (hollow box: base and four walls)
         Box(L, W, H)
         # Hollow out the inside
-        with Pos(0, 0, t):
+        with Locations((0, 0, t)):
             Box(L - 2 * t, W - 2 * t, H - t + 0.1, mode=Mode.SUBTRACT)
 
         # X-direction dividers (span full width, run along Y)
         cell_l = (L - (nx - 1) * t) / nx
         for i in range(nx - 1):
             x = -L / 2 + (i + 1) * cell_l + (i + 0.5) * t
-            with Pos(x, 0, H / 2):
+            with Locations((x, 0, H / 2)):
                 Box(t, W - 2 * t, H + 0.1, mode=Mode.ADD)
 
         # Y-direction dividers (span full length, run along X)
         cell_w = (W - (ny - 1) * t) / ny
         for j in range(ny - 1):
             y = -W / 2 + (j + 1) * cell_w + (j + 0.5) * t
-            with Pos(0, y, H / 2):
+            with Locations((0, y, H / 2)):
                 Box(L - 2 * t, t, H + 0.1, mode=Mode.ADD)
 
     return build

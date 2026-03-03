@@ -10,10 +10,10 @@ any function that returns a Build123D Build (or equivalent) result.
 """
 from build123d import Axis
 from build123d import Box
-from build123d import Build
+from build123d import BuildPart
 from build123d import fillet
+from build123d import Locations
 from build123d import Mode
-from build123d import Pos
 from mr import artifact
 
 
@@ -36,11 +36,11 @@ def vented_enclosure():
     A small enclosure (e.g. for a tiny electronics project) with vent slots
     and filleted edges.
 
-    The function must return the Build context manager's result so MakerRepo
+    The function must return the BuildPart context manager's result so MakerRepo
     can export the solid. Use cover=True to use this model's snapshot as the
     repository cover image on MakerRepo.com.
     """
-    with Build() as build:
+    with BuildPart() as build:
         # Base box: 60×40×25 mm
         Box(60, 40, 25)
         # Round the top edges for a friendlier look (fillet radius 3 mm)
@@ -54,7 +54,6 @@ def vented_enclosure():
             y_pos = side * (40 / 2 - 2)  # inset slightly from outer face
             for i in range(4):
                 x_pos = -60 / 2 + slot_spacing + i * (slot_w + slot_spacing)
-                with Build(build):
-                    with Pos(x_pos, y_pos, 25 / 2):
-                        Box(slot_w, 3, slot_h, mode=Mode.SUBTRACT)
+                with Locations((x_pos, y_pos, 25 / 2)):
+                    Box(slot_w, 3, slot_h, mode=Mode.SUBTRACT)
     return build

@@ -4,8 +4,8 @@ Build123D CAD models for [MakerRepo.com](https://makerrepo.com/) — manufacturi
 
 This project includes:
 
-- **Artifacts** — fixed CAD models (see `src/{{ cookiecutter.project_slug }}/vented_enclosure.py`).
-- **Generators** — parametric models users can customize (see `src/{{ cookiecutter.project_slug }}/desk_organizer.py`).
+- **Artifacts** — fixed CAD models (see `{{ cookiecutter.project_slug }}/vented_enclosure.py`).
+- **Generators** — parametric models users can customize (see `{{ cookiecutter.project_slug }}/desk_organizer.py`).
 
 ## Quick start
 
@@ -100,11 +100,10 @@ uv run mr generators --help
 {{ cookiecutter.project_slug }}/
 ├── pyproject.toml
 ├── README.md
-└── src/
-    └── {{ cookiecutter.project_slug }}/
-        ├── __init__.py
-        ├── vented_enclosure.py   # @artifact — fixed model
-        └── desk_organizer.py     # @customizable — parametric model
+└── {{ cookiecutter.project_slug }}/
+    ├── __init__.py
+    ├── vented_enclosure.py   # @artifact — fixed model
+    └── desk_organizer.py     # @customizable — parametric model
 ```
 
 - Add more modules and decorate functions with `@artifact` or `@customizable`; MakerRepo (and `mr`) will discover them automatically.
