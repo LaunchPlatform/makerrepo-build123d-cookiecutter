@@ -6,7 +6,7 @@ Thank you for using MakerRepo, and congratulations on creating this sample Maker
 
 This project includes:
 
-- **Artifacts** — fixed CAD models (see `{{ cookiecutter.project_slug }}/vented_enclosure.py`).
+- **Artifacts** — fixed CAD models (see `{{ cookiecutter.project_slug }}/tutorial_bracket.py`).
 - **Generators** — parametric models users can customize (see `{{ cookiecutter.project_slug }}/desk_organizer.py`).
 
 ## Quick start
@@ -39,7 +39,7 @@ Install and run the [OCP viewer](https://github.com/OpenCadCode/OCP-viewer) firs
 ```bash
 uv run mr artifacts view
 # Or specify by name, e.g.:
-uv run mr artifacts view vented_enclosure.vented_enclosure
+uv run mr artifacts view tutorial_bracket.tutorial_bracket
 ```
 
 **Export an artifact to a file (STEP, STL, 3MF, etc.):**
@@ -47,26 +47,26 @@ uv run mr artifacts view vented_enclosure.vented_enclosure
 ```bash
 uv run mr artifacts export -o ./output
 # Or to a specific file:
-uv run mr artifacts export vented_enclosure.vented_enclosure -o enclosure.step
+uv run mr artifacts export tutorial_bracket.tutorial_bracket -o bracket.step
 ```
 
 **Run a generator with custom parameters and view the result:**
 
 ```bash
-uv run mr generators view desk_organizer.desk_organizer -p '{"length": 150, "width": 90, "height": 40, "n_length": 4, "n_width": 2}'
+uv run mr generators view desk_organizer/desk_organizer -p '{"length": 150, "width": 90, "height": 40, "n_length": 4, "n_width": 2}'
 ```
 
 **Export generator output:**
 
 ```bash
-uv run mr generators export desk_organizer.desk_organizer -p '{"length": 120, "width": 80, "height": 35}' -o organizer.step
+uv run mr generators export desk_organizer/desk_organizer -p '{"length": 120, "width": 80, "height": 35}' -o organizer.step
 ```
 
 **Snapshot (screenshot) an artifact or generator:**
 
 ```bash
 uv run mr artifacts snapshot -o artifact.png
-uv run mr generators snapshot desk_organizer.desk_organizer -p '{}' -o generator.png
+uv run mr generators snapshot desk_organizer/desk_organizer -p '{}' -o generator.png
 ```
 
 You can use the short alias `mr` instead of `makerrepo-cli`. For full CLI options:
@@ -123,7 +123,7 @@ If you generated this project with the cookiecutter template and have not create
 ├── README.md
 └── {{ cookiecutter.project_slug }}/
     ├── __init__.py
-    ├── vented_enclosure.py   # @artifact — fixed model
+    ├── tutorial_bracket.py   # @artifact — fixed model from build123d tutorial
     └── desk_organizer.py     # @customizable — parametric model
 ```
 
