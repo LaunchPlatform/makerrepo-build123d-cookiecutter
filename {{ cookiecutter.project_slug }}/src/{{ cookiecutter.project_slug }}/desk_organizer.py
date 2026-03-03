@@ -1,5 +1,5 @@
 """
-Sample generator: a parametric CAD model users can customize on MakerRepo.com.
+Desk organizer: a parametric CAD generator users can customize on MakerRepo.com.
 
 A *generator* is a parametric model: a function that takes user-supplied
 parameters (defined with Pydantic) and returns a customized Build123D object.
@@ -32,6 +32,13 @@ class DeskOrganizerParameters(BaseModel):
     )
 
 
+# The @customizable decorator registers this parametric model so that:
+# - MakerRepo.com: visitors can tweak parameters in the web UI and
+#   request a build; sample_parameters is used for the preview/snapshot.
+# - MakerRepo CLI (mr): use `mr generators list`, `mr generators view`,
+#   `mr generators export`, `mr generators snapshot` with -p for
+#   parameters.
+# Docs: https://docs.makerrepo.com/generators/
 @customizable(
     sample_parameters=DeskOrganizerParameters(
         length=120,

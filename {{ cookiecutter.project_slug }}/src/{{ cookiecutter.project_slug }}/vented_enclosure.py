@@ -1,5 +1,5 @@
 """
-Sample artifact: a fixed CAD model published to MakerRepo.com.
+Vented enclosure: a fixed CAD artifact published to MakerRepo.com.
 
 An *artifact* is a CAD model produced by a single function. When you push your
 repo to MakerRepo.com, CI runs this function, exports the geometry (STEP, STL,
@@ -17,6 +17,14 @@ from build123d import Pos
 from mr import artifact
 
 
+# The @artifact decorator registers this function so that:
+# - MakerRepo.com: when you push, CI runs vented_enclosure(), exports
+#   geometry (STEP, STL, 3MF, etc.), and attaches it to the build for
+#   viewing/sharing in the web UI.
+# - MakerRepo CLI (mr): use `mr artifacts list`, `mr artifacts view`,
+#   `mr artifacts export`, `mr artifacts snapshot` to work with this
+#   model locally.
+# Docs: https://docs.makerrepo.com/artifacts/
 @artifact(
     cover=True,
     short_desc="Small vented enclosure with rounded corners — sample artifact",
