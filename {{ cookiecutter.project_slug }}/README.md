@@ -39,7 +39,7 @@ Install and run the [OCP viewer](https://github.com/OpenCadCode/OCP-viewer) firs
 ```bash
 uv run mr artifacts view
 # Or specify by name, e.g.:
-uv run mr artifacts view tutorial_bracket.tutorial_bracket
+uv run mr artifacts view {{ cookiecutter.project_slug }}.tutorial_bracket/tutorial_bracket
 ```
 
 **Export an artifact to a file (STEP, STL, 3MF, etc.):**
@@ -47,26 +47,26 @@ uv run mr artifacts view tutorial_bracket.tutorial_bracket
 ```bash
 uv run mr artifacts export -o ./output
 # Or to a specific file:
-uv run mr artifacts export tutorial_bracket.tutorial_bracket -o bracket.step
+uv run mr artifacts export {{ cookiecutter.project_slug }}.tutorial_bracket/tutorial_bracket -o bracket.step
 ```
 
 **Run a generator with custom parameters and view the result:**
 
 ```bash
-uv run mr generators view desk_organizer/desk_organizer -p '{"length": 150, "width": 90, "height": 40, "n_length": 4, "n_width": 2}'
+uv run mr generators view {{ cookiecutter.project_slug }}.desk_organizer/desk_organizer -p '{"length": 150, "width": 90, "height": 40, "n_length": 4, "n_width": 2}'
 ```
 
 **Export generator output:**
 
 ```bash
-uv run mr generators export desk_organizer/desk_organizer -p '{"length": 120, "width": 80, "height": 35}' -o organizer.step
+uv run mr generators export {{ cookiecutter.project_slug }}.desk_organizer/desk_organizer -p '{"length": 120, "width": 80, "height": 35}' -o organizer.step
 ```
 
 **Snapshot (screenshot) an artifact or generator:**
 
 ```bash
 uv run mr artifacts snapshot -o artifact.png
-uv run mr generators snapshot desk_organizer/desk_organizer -p '{}' -o generator.png
+uv run mr generators snapshot {{ cookiecutter.project_slug }}.desk_organizer/desk_organizer -p '{}' -o generator.png
 ```
 
 You can use the short alias `mr` instead of `makerrepo-cli`. For full CLI options:
