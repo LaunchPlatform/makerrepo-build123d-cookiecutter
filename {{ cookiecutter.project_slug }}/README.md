@@ -11,7 +11,23 @@ This project includes:
 
 ## Quick start
 
-### 1. Install dependencies
+### 1. Clone this repository
+
+If this project already exists on MakerRepo.com, clone it to your local machine first:
+
+1. **Create an access token** with Git permissions on the [access token management page](https://makerrepo.com/access-tokens/).
+2. **Clone your repository** (when prompted for password, use your [access token](https://makerrepo.com/access-tokens/) secret):
+
+   ```bash
+   git clone https://makerrepo.com/{{ cookiecutter.username }}/{{ cookiecutter.project_slug }}.git
+   cd {{ cookiecutter.project_slug }}
+   ```
+
+If you generated this project from the cookiecutter template and have not created a MakerRepo repository yet, you can do that later when you're ready to push (see **"Edit, commit, and push to MakerRepo.com"** below).
+
+### 2. Install dependencies
+
+We assume you already have `uv` installed. If not, follow the [uv installation guide](https://docs.astral.sh/uv/getting-started/installation/).
 
 From this directory (project root):
 
@@ -21,7 +37,15 @@ uv sync
 
 This installs `build123d`, `makerrepo`, `makerrepo-cli`, and `pydantic` into the project environment.
 
-### 2. Run workflows locally with MakerRepo CLI
+If you prefer not to use `uv` to run the CLI, you can also install the MakerRepo CLI (`mr` command) directly from PyPI for your current user only:
+
+```bash
+pip install --user makerrepo-cli
+```
+
+After installing `makerrepo-cli` with `pip` for your user, you can run the examples below as `mr ...` instead of `uv run mr ...` (you will still need to ensure the project dependencies are installed by your preferred method).
+
+### 3. Run workflows locally with MakerRepo CLI
 
 All commands below are run from the **project root** (where `pyproject.toml` lives). The CLI discovers artifacts and generators by scanning your Python packages.
 
@@ -77,19 +101,11 @@ uv run mr artifacts --help
 uv run mr generators --help
 ```
 
-### 3. Clone, edit, and push to MakerRepo.com
+## Edit, commit, and push to MakerRepo.com
 
-This repository was created for MakerRepo.com. To work with it locally:
+Once you have the project cloned and dependencies installed, you can make changes and push them back to MakerRepo.com:
 
-1. **Create an access token** with Git permissions on the [access token management page](https://makerrepo.com/access-tokens/).
-2. **Clone your repository** (when prompted for password, use your [access token](https://makerrepo.com/access-tokens/) secret):
-
-   ```bash
-   git clone https://makerrepo.com/{{ cookiecutter.username }}/{{ cookiecutter.project_slug }}.git
-   cd {{ cookiecutter.project_slug }}
-   ```
-
-3. **Make local changes** — edit CAD modules, add artifacts or generators, then commit and push:
+1. **Make local changes** — edit CAD modules, add artifacts or generators, then commit and push:
 
    ```bash
    git add .
@@ -97,7 +113,7 @@ This repository was created for MakerRepo.com. To work with it locally:
    git push
    ```
 
-4. After you push, MakerRepo CI will build your artifacts and generators and publish them to the web UI. Refresh your repository page on MakerRepo.com to view and share models in the embedded OCP viewer.
+2. After you push, MakerRepo CI will build your artifacts and generators and publish them to the web UI. Refresh your repository page on MakerRepo.com to view and share models in the embedded OCP viewer.
 
 If you generated this project with the cookiecutter template and have not created a MakerRepo repository yet, [create one](https://makerrepo.com/repositories/create), then add it as the remote and push:
 
