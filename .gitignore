@@ -1,0 +1,10 @@
+# Test output when running cookiecutter locally
+_test_output/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+.uv/

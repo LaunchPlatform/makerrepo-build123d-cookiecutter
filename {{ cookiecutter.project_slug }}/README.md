@@ -1,0 +1,115 @@
+# {{ cookiecutter.project_name }}
+
+Build123D CAD models for [MakerRepo.com](https://makerrepo.com/) — manufacturing as code.
+
+This project includes:
+
+- **Artifacts** — fixed CAD models (see `src/{{ cookiecutter.project_slug }}/artifact_example.py`).
+- **Generators** — parametric models users can customize (see `src/{{ cookiecutter.project_slug }}/generator_example.py`).
+
+## Quick start
+
+### 1. Install dependencies
+
+From this directory (project root):
+
+```bash
+uv sync
+```
+
+This installs `build123d`, `makerrepo`, `makerrepo-cli`, and `pydantic` into the project environment.
+
+### 2. Run workflows locally with MakerRepo CLI
+
+All commands below are run from the **project root** (where `pyproject.toml` lives). The CLI discovers artifacts and generators by scanning your Python packages.
+
+**List artifacts and generators:**
+
+```bash
+uv run mr artifacts list
+uv run mr generators list
+```
+
+**View an artifact in the OCP viewer:**
+
+```bash
+uv run mr artifacts view
+# Or specify by name, e.g.:
+uv run mr artifacts view artifact_example.sample_cube
+```
+
+**Export an artifact to a file (STEP, STL, 3MF, etc.):**
+
+```bash
+uv run mr artifacts export -o ./output
+# Or to a specific file:
+uv run mr artifacts export artifact_example.sample_cube -o cube.step
+```
+
+**Run a generator with custom parameters and view the result:**
+
+```bash
+uv run mr generators view {{ cookiecutter.project_slug }}.generator_example.parametric_box -p '{"width": 30, "depth": 20, "height": 15}'
+```
+
+**Export generator output:**
+
+```bash
+uv run mr generators export {{ cookiecutter.project_slug }}.generator_example.parametric_box -p '{"width": 25, "depth": 25, "height": 10}' -o my_box.step
+```
+
+**Snapshot (screenshot) an artifact or generator:**
+
+```bash
+uv run mr artifacts snapshot -o artifact.png
+uv run mr generators snapshot {{ cookiecutter.project_slug }}.generator_example.parametric_box -p '{}' -o generator.png
+```
+
+You can use the short alias `mr` instead of `makerrepo-cli`. For full CLI options:
+
+```bash
+uv run mr --help
+uv run mr artifacts --help
+uv run mr generators --help
+```
+
+### 3. Push to MakerRepo.com
+
+1. **Create a repository** on [MakerRepo.com](https://makerrepo.com/repositories/create).
+2. **Add the remote** and push your code (use an [access token](https://makerrepo.com/access-tokens/) instead of a password):
+
+   ```bash
+   git remote add origin https://makerrepo.com/<your-username>/<repo-name>.git
+   git push -u origin main
+   ```
+
+3. CI will run, build your artifacts and generators, and publish them to the web UI. You can view and share models in the embedded OCP viewer.
+
+## Documentation
+
+- **MakerRepo docs** — [docs.makerrepo.com](https://docs.makerrepo.com/)
+- **Getting started** — [docs.makerrepo.com/getting-started/](https://docs.makerrepo.com/getting-started/)
+- **Artifacts** — [docs.makerrepo.com/artifacts/](https://docs.makerrepo.com/artifacts/) (decorator options, export formats)
+- **Generators** — [docs.makerrepo.com/generators/](https://docs.makerrepo.com/generators/) (parameters, validation, performance)
+- **MakerRepo CLI** — [docs.makerrepo.com/makerrepo-cli/](https://docs.makerrepo.com/makerrepo-cli/) (artifacts and generators subcommands)
+- **Build123D** — [github.com/gumyr/build123d](https://github.com/gumyr/build123d)
+
+## Project layout
+
+```
+{{ cookiecutter.project_slug }}/
+├── pyproject.toml
+├── README.md
+└── src/
+    └── {{ cookiecutter.project_slug }}/
+        ├── __init__.py
+        ├── artifact_example.py   # @artifact — fixed model
+        └── generator_example.py  # @customizable — parametric model
+```
+
+- Add more modules and decorate functions with `@artifact` or `@customizable`; MakerRepo (and `mr`) will discover them automatically.
+- Use `desc` and `short_desc` on decorators to improve how models appear on MakerRepo.com.
+
+## License
+
+MIT.
