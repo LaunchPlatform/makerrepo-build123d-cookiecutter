@@ -1,6 +1,8 @@
-# {{ cookiecutter.project_name }}
+# {{ cookiecutter.project_slug }}
 
-Build123D CAD models for [MakerRepo.com](https://makerrepo.com/) — manufacturing as code.
+Hi there! 😄👋
+
+Thank you for using MakerRepo, and congratulations on creating this sample MakerRepo repository. There are many things you can do with MakerRepo—feel free to explore, customize, and use this project as a starting point.
 
 This project includes:
 
@@ -32,6 +34,8 @@ uv run mr generators list
 
 **View an artifact in the OCP viewer:**
 
+Install and run the [OCP viewer](https://github.com/OpenCadCode/OCP-viewer) first; the commands below open models in it.
+
 ```bash
 uv run mr artifacts view
 # Or specify by name, e.g.:
@@ -49,20 +53,20 @@ uv run mr artifacts export vented_enclosure.vented_enclosure -o enclosure.step
 **Run a generator with custom parameters and view the result:**
 
 ```bash
-uv run mr generators view {{ cookiecutter.project_slug }}.desk_organizer.desk_organizer -p '{"length": 150, "width": 90, "height": 40, "n_length": 4, "n_width": 2}'
+uv run mr generators view desk_organizer.desk_organizer -p '{"length": 150, "width": 90, "height": 40, "n_length": 4, "n_width": 2}'
 ```
 
 **Export generator output:**
 
 ```bash
-uv run mr generators export {{ cookiecutter.project_slug }}.desk_organizer.desk_organizer -p '{"length": 120, "width": 80, "height": 35}' -o organizer.step
+uv run mr generators export desk_organizer.desk_organizer -p '{"length": 120, "width": 80, "height": 35}' -o organizer.step
 ```
 
 **Snapshot (screenshot) an artifact or generator:**
 
 ```bash
 uv run mr artifacts snapshot -o artifact.png
-uv run mr generators snapshot {{ cookiecutter.project_slug }}.desk_organizer.desk_organizer -p '{}' -o generator.png
+uv run mr generators snapshot desk_organizer.desk_organizer -p '{}' -o generator.png
 ```
 
 You can use the short alias `mr` instead of `makerrepo-cli`. For full CLI options:
@@ -73,17 +77,34 @@ uv run mr artifacts --help
 uv run mr generators --help
 ```
 
-### 3. Push to MakerRepo.com
+### 3. Clone, edit, and push to MakerRepo.com
 
-1. **Create a repository** on [MakerRepo.com](https://makerrepo.com/repositories/create).
-2. **Add the remote** and push your code (use an [access token](https://makerrepo.com/access-tokens/) instead of a password):
+This repository was created for MakerRepo.com. To work with it locally:
+
+1. **Create an access token** with Git permissions on the [access token management page](https://makerrepo.com/access-tokens/).
+2. **Clone your repository** (when prompted for password, use your [access token](https://makerrepo.com/access-tokens/) secret):
 
    ```bash
-   git remote add origin https://makerrepo.com/<your-username>/<repo-name>.git
-   git push -u origin main
+   git clone https://makerrepo.com/{{ cookiecutter.username }}/{{ cookiecutter.project_slug }}.git
+   cd {{ cookiecutter.project_slug }}
    ```
 
-3. CI will run, build your artifacts and generators, and publish them to the web UI. You can view and share models in the embedded OCP viewer.
+3. **Make local changes** — edit CAD modules, add artifacts or generators, then commit and push:
+
+   ```bash
+   git add .
+   git commit -m "Your commit message"
+   git push
+   ```
+
+4. After you push, MakerRepo CI will build your artifacts and generators and publish them to the web UI. Refresh your repository page on MakerRepo.com to view and share models in the embedded OCP viewer.
+
+If you generated this project with the cookiecutter template and have not created a MakerRepo repository yet, [create one](https://makerrepo.com/repositories/create), then add it as the remote and push:
+
+   ```bash
+   git remote add origin https://makerrepo.com/{{ cookiecutter.username }}/{{ cookiecutter.project_slug }}.git
+   git push -u origin main
+   ```
 
 ## Documentation
 
@@ -108,7 +129,3 @@ uv run mr generators --help
 
 - Add more modules and decorate functions with `@artifact` or `@customizable`; MakerRepo (and `mr`) will discover them automatically.
 - Use `desc` and `short_desc` on decorators to improve how models appear on MakerRepo.com.
-
-## License
-
-MIT.

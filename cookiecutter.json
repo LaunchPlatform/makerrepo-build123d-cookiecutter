@@ -1,6 +1,5 @@
 {
-  "project_name": "My MakerRepo CAD Project",
   "project_slug": "my_makerrepo_cad",
-  "author": "Your Name",
+  "username": "myuser",
   "year": "{% now 'utc', '%Y' %}"
 }
