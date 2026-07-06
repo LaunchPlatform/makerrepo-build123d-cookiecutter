@@ -5,7 +5,7 @@ description = "Build123D CAD models for MakerRepo.com"
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 dependencies = [
-    "build123d>=0.10.0,<0.11",
+    "build123d>=0.11.0,<0.12",
     "makerrepo>=0.3.7,<0.4",
     "makerrepo-cli>=0.2.0,<0.3",
     "pydantic>=2.12.5,<3",
